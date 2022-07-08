@@ -23,7 +23,9 @@ describe('TropicalCardboardCoin', () => {
     expect(balance).to.equal(0);
     expect(supply).to.equal(0);
 
-    await tropicalCardboardCoin.mint(recipient1, 0, 2, '0x');
+    await tropicalCardboardCoin.payToMint(recipient1, 0, 2, '0x', {
+      value: ethers.utils.parseEther('0.05')
+    });
 
     const newBalance = await tropicalCardboardCoin.balanceOf(recipient1, 0);
     const newSupply = await tropicalCardboardCoin.count();
@@ -39,7 +41,9 @@ describe('TropicalCardboardCoin', () => {
     expect(supply).to.equal(2);
     expect(balance).to.equal(0);
 
-    await tropicalCardboardCoin.mint(recipient2, 0, 1442, '0x');
+    await tropicalCardboardCoin.payToMint(recipient2, 0, 1442, '0x', {
+      value: ethers.utils.parseEther('0.05')
+    });
 
     const newBalance = await tropicalCardboardCoin.balanceOf(recipient2, 0);
     const newSupply = await tropicalCardboardCoin.count();
@@ -54,7 +58,9 @@ describe('TropicalCardboardCoin', () => {
     expect(supply).to.equal(1444);
 
     await expect(
-      tropicalCardboardCoin.mint(recipient2, 0, 1, '0x')
+      tropicalCardboardCoin.payToMint(recipient2, 0, 1, '0x', {
+        value: ethers.utils.parseEther('0.05')
+      })
     ).to.be.revertedWith('Max supply reached');
   });
 
