@@ -2,6 +2,14 @@ import '../styles/globals.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
+import Navigation from '../components/Navigation';
+
+const NAV_LINKS = [
+  {
+    label: 'View Coin',
+    link: '/view-coin'
+  }
+];
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -24,6 +32,7 @@ export default function App(props: AppProps) {
           colorScheme: 'light'
         }}
       >
+        <Navigation links={NAV_LINKS} />
         <Component {...pageProps} />
       </MantineProvider>
     </>

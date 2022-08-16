@@ -9,7 +9,7 @@ contract TropicalCardboardCoin is ERC1155, Ownable, ERC1155Burnable {
     uint256 private totalSupply = 0;
     uint256 private constant MAX_SUPPLY = 1444;
 
-    constructor() ERC1155("ipfs://") {}
+    constructor() ERC1155("ipfs://QmVXvnBWC1AgR3QFNwdDxfcd7RuFdfso9hE6kW7k4VadQy") {}
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
