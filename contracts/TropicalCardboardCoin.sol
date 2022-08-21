@@ -9,7 +9,7 @@ contract TropicalCardboardCoin is ERC1155, Ownable, ERC1155Burnable {
     uint256 private totalSupply = 0;
     uint256 private constant MAX_SUPPLY = 1444;
 
-    constructor() ERC1155("ipfs://QmVXvnBWC1AgR3QFNwdDxfcd7RuFdfso9hE6kW7k4VadQy") {}
+    constructor() ERC1155("ipfs://QmTUkyeh44nGBdWJ8jN1vegybaa5CLEhqfB1dVcCXw4K1G") {}
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
@@ -60,7 +60,7 @@ contract TropicalCardboardCoin is ERC1155, Ownable, ERC1155Burnable {
         bytes memory data
     ) public payable {
         require(totalSupply + amount <= MAX_SUPPLY, "Max supply reached");
-        require (msg.value >= 0.05 ether, "Need to pay up!");
+        require (msg.value >= 0.005 ether, "Need to pay up!");
         
         _mint(account, id, amount, data);
         totalSupply += amount;

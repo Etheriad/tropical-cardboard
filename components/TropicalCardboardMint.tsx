@@ -13,7 +13,7 @@ declare global {
 const TropicalCardboardMint = () => {
   const mintToken = async () => {
     // TropicalCardboardCoin
-    const contractAddress = '0xBb03f9F3144287209a49Bf12D4dd3891e5F50cf3';
+    const contractAddress = '0x1702Fe3AEE8804366fd8B5D6822c1aD0d1e8FD7A';
 
     const provider = new ethers.providers.Web3Provider(window.ethereum!);
 
