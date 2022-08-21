@@ -3,15 +3,9 @@ import MintModal from '../components/MintModal';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Install from '../components/Install';
-import { Center, Container, LoadingOverlay } from '@mantine/core';
-import Navigation from '../components/Navigation';
+import { Center, LoadingOverlay } from '@mantine/core';
 
-declare global {
-  // eslint-disable-next-line no-unused-vars
-  interface Window {
-    ethereum?: ethers.providers.ExternalProvider;
-  }
-}
+declare let window: any;
 
 const Home: NextPage = () => {
   const [onServer, setOnServer] = useState(true);

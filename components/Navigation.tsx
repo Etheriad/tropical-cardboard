@@ -6,8 +6,7 @@ import {
   Group,
   Burger,
   Paper,
-  Transition,
-  Button
+  Transition
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
@@ -104,7 +103,7 @@ const Navigation = ({ links }: HeaderResponsiveProps) => {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <Link href={link.link}>
+    <Link key={link.label} href={link.link}>
       <a
         key={link.label}
         className={cx(classes.link, {
