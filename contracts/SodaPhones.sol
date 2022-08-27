@@ -19,7 +19,7 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
     constructor() ERC721("SodaPhones", "SDP") {}
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://ipfs.io/ipfs/";
+        return "https://ipfs.io/ipfs/QmUwf8PDyrYo9BisiL3LQqHDSMtyZk9jqBx4dsyeMU7Lh3/";
     }
 
     function safeMint(address to, string memory uri) public onlyOwner {
