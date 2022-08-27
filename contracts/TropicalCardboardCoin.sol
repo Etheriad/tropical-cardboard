@@ -8,6 +8,8 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 contract TropicalCardboardCoin is ERC1155, Ownable, ERC1155Burnable {
     uint256 private totalSupply = 0;
     uint256 private constant MAX_SUPPLY = 1444;
+    // Title of collection on OpenSea
+    string public name = "Tropical Cardboard";
 
     constructor() ERC1155("https://ipfs.io/ipfs/QmeqzsbwCc9qHP54M1oXvvhfece6i7kBtFaBb574cDqnrt") {}
 
