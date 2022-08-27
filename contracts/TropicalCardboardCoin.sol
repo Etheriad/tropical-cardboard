@@ -55,6 +55,10 @@ contract TropicalCardboardCoin is ERC1155, Ownable, ERC1155Burnable {
         return totalSupply;
     }
 
+    function getBalance(address account) public view returns (uint256) {
+        return balanceOf(account, 0);
+    }
+
     function payToMint(
         address account,
         uint256 id,

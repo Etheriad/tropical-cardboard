@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "./TropicalCardboardCoin.sol";
 
 contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
@@ -13,10 +14,12 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
 
     mapping(string => uint8) existingURIs;
 
+    address TROPICAL_CARDBOARD_COIN_ADDRESS = 0xE1BaF4fE79fa56B6200c2D6bdf077EBa483b7658;
+
     constructor() ERC721("SodaPhones", "SDP") {}
 
     function _baseURI() internal pure override returns (string memory) {
-        return "ipfs://";
+        return "https://ipfs.io/ipfs/";
     }
 
     function safeMint(address to, string memory uri) public onlyOwner {
@@ -41,20 +44,27 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
         return super.tokenURI(tokenId);
     }
 
-    function isContentOwned(string memory uri) public view returns (bool) {
-      return existingURIs[uri] == 1;
+    function getContentSupply(string memory uri) public view returns (uint8) {
+      return existingURIs[uri];
     }
 
     function payToMint(
         address recipient,
         string memory metadataURI
     ) public payable returns (uint256) {
-        require(existingURIs[metadataURI] != 1, "NFT already minted!");
+        TropicalCardboardCoin tcc = TropicalCardboardCoin(TROPICAL_CARDBOARD_COIN_ADDRESS);
+        uint256 tropCardboardBalance = tcc.getBalance(recipient);
+
+        // Must be an owner of TropicalCarboardCoin
+        require(tropCardboardBalance >= 1);
+        // Supply must not be exceeded
+        require(existingURIs[metadataURI] <= 10, "Max supply reached!");
+        // Sender must send payment
         require (msg.value >= 0.05 ether, "Need to pay up!");
 
         uint256 newItemId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
-        existingURIs[metadataURI] = 1;
+        existingURIs[metadataURI]++;
 
         _mint(recipient, newItemId);
         _setTokenURI(newItemId, metadataURI);
