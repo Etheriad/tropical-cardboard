@@ -62,6 +62,9 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
         // Sender must send payment
         require (msg.value >= 0.05 ether, "Need to pay up!");
 
+        // Burn one Tropical Cardboard Coin
+        tcc.burn(recipient, 0, 1);
+
         uint256 newItemId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         existingURIs[metadataURI]++;
