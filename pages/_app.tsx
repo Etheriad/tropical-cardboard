@@ -6,8 +6,24 @@ import Navigation from '../components/Navigation';
 
 const NAV_LINKS = [
   {
-    label: 'View Coin',
-    link: '/view-coin'
+    label: 'About',
+    link: '/about'
+  },
+  {
+    label: 'Coin Exchange',
+    link: '/coin-exchange'
+  },
+  {
+    label: 'Soda Machine',
+    link: '/soda-machine'
+  },
+  {
+    label: 'Meet The Team',
+    link: '/meet-the-team'
+  },
+  {
+    label: 'References',
+    link: '/references'
   }
 ];
 
@@ -29,7 +45,9 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         theme={{
           /** Put your mantine theme override here */
-          colorScheme: 'light'
+          colorScheme: 'light',
+          fontFamily: 'Gill Sans',
+          primaryColor: 'grape'
         }}
       >
         <Navigation links={NAV_LINKS} />
