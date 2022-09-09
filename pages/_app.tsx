@@ -6,6 +6,10 @@ import Navigation from '../components/Navigation';
 
 const NAV_LINKS = [
   {
+    label: 'Main Page',
+    link: '/'
+  },
+  {
     label: 'About',
     link: '/about'
   },
