@@ -2,34 +2,6 @@ import '../styles/globals.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
-import Navigation from '../components/Navigation';
-
-const NAV_LINKS = [
-  {
-    label: 'Main Page',
-    link: '/'
-  },
-  {
-    label: 'About',
-    link: '/about'
-  },
-  {
-    label: 'Coin Exchange',
-    link: '/coin-exchange'
-  },
-  {
-    label: 'Soda Machine',
-    link: '/soda-machine'
-  },
-  {
-    label: 'Meet The Team',
-    link: '/meet-the-team'
-  },
-  {
-    label: 'References',
-    link: '/references'
-  }
-];
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
