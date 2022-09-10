@@ -1,6 +1,6 @@
 import { Title, Button } from '@mantine/core';
 import type { NextPage } from 'next';
-import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax';
 import Navigation from '../components/Navigation';
 import { useRef } from 'react';
 
@@ -32,14 +32,14 @@ const NAV_LINKS = [
 ];
 
 const Home: NextPage = () => {
-  const ref = useRef(null);
+  const ref = useRef<IParallax>(null);
 
   const scrollToCoinExchange = () => {
-    ref.current.scrollTo(6);
+    ref.current!.scrollTo(6);
   };
 
   const scrollToSodaMachine = () => {
-    ref.current.scrollTo(7);
+    ref.current!.scrollTo(7);
   };
 
   return (
