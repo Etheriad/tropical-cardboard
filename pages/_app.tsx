@@ -54,7 +54,7 @@ export default function App(props: AppProps) {
           primaryColor: 'grape'
         }}
       >
-        <Navigation links={NAV_LINKS} />
+        {/* <Navigation links={NAV_LINKS} /> */}
         <Component {...pageProps} />
       </MantineProvider>
     </>
