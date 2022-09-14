@@ -36,10 +36,41 @@ const TropicalCardboardMint = () => {
     await result.wait();
   };
 
+  const withdrawAll = async () => {
+    // TropicalCardboardCoin
+    const contractAddress = '0x1702Fe3AEE8804366fd8B5D6822c1aD0d1e8FD7A';
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum!);
+
+    // get the end user
+    const signer = provider.getSigner();
+
+    // get the smart contract
+    const tropicalContract = new ethers.Contract(
+      contractAddress,
+      TropicalCardboardCoin.abi,
+      signer
+    );
+
+    // const addr = await signer.getAddress();
+
+    const result = tropicalContract
+      .withdrawAll()
+      .then(() => console.log('Success'))
+      .catch(() => console.error('Error'));
+
+    await result.wait();
+  };
+
   return (
-    <Button variant="outline" onClick={() => mintToken()}>
-      Mint!
-    </Button>
+    <>
+      <Button variant="outline" onClick={() => mintToken()}>
+        Mint!
+      </Button>
+      <Button variant="outline" onClick={() => withdrawAll()}>
+        Withdraw All
+      </Button>
+    </>
   );
 };
 
