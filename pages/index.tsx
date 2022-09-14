@@ -54,7 +54,10 @@ const Home: NextPage = () => {
       </Button>
       <Parallax pages={10} ref={ref}>
         <ParallaxLayer
-          style={{ backgroundSize: 'cover', backgroundColor: 'turquoise' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: '/public/backgrounds/0.svg'
+          }}
         >
           <Title order={1} align="center" color="violet">
             Welcome to the
