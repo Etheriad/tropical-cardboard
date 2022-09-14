@@ -24,7 +24,7 @@ describe('TropicalCardboardCoin', () => {
     expect(supply).to.equal(0);
 
     await tropicalCardboardCoin.payToMint(recipient1, 0, 2, '0x', {
-      value: ethers.utils.parseEther('0.05')
+      value: ethers.utils.parseEther('0.0025')
     });
 
     const newBalance = await tropicalCardboardCoin.balanceOf(recipient1, 0);
@@ -32,6 +32,18 @@ describe('TropicalCardboardCoin', () => {
 
     expect(newBalance).to.equal(2);
     expect(newSupply).to.equal(2);
+  });
+
+  it('should not be able to mint with insufficient funds', async () => {
+    const supply = await tropicalCardboardCoin.count();
+
+    expect(supply).to.equal(2);
+
+    await expect(
+      tropicalCardboardCoin.payToMint(recipient2, 0, 1, '0x', {
+        value: ethers.utils.parseEther('0.0')
+      })
+    ).to.be.revertedWith('Need to pay up!');
   });
 
   it('should be able to mint up to 1444', async () => {
@@ -42,7 +54,7 @@ describe('TropicalCardboardCoin', () => {
     expect(balance).to.equal(0);
 
     await tropicalCardboardCoin.payToMint(recipient2, 0, 1442, '0x', {
-      value: ethers.utils.parseEther('0.05')
+      value: ethers.utils.parseEther('0.0025')
     });
 
     const newBalance = await tropicalCardboardCoin.balanceOf(recipient2, 0);
@@ -59,7 +71,7 @@ describe('TropicalCardboardCoin', () => {
 
     await expect(
       tropicalCardboardCoin.payToMint(recipient2, 0, 1, '0x', {
-        value: ethers.utils.parseEther('0.05')
+        value: ethers.utils.parseEther('0.0025')
       })
     ).to.be.revertedWith('Max supply reached');
   });
@@ -69,6 +81,12 @@ describe('TropicalCardboardCoin', () => {
     await expect(
       tropicalCardboardCoin.burn(recipient1, 0, 3)
     ).to.be.revertedWith('ERC1155: burn amount exceeds balance');
+  });
+
+  it('should not allow to burn when not owner', async () => {
+    await expect(
+      tropicalCardboardCoin.burn(recipient2, 0, 3)
+    ).to.be.revertedWith('ERC1155: caller is not owner or not approved');
   });
 
   it('should burn specified amount of tokens if <= amount owned', async () => {

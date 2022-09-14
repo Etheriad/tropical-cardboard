@@ -13,7 +13,7 @@ declare global {
 const TropicalCardboardMint = () => {
   const mintToken = async () => {
     // TropicalCardboardCoin
-    const contractAddress = '0xE1BaF4fE79fa56B6200c2D6bdf077EBa483b7658';
+    const contractAddress = '0x1702Fe3AEE8804366fd8B5D6822c1aD0d1e8FD7A';
 
     const provider = new ethers.providers.Web3Provider(window.ethereum!);
 
@@ -27,11 +27,10 @@ const TropicalCardboardMint = () => {
       signer
     );
 
-    // const connection = tropicalContract.connect(signer);
     const addr = await signer.getAddress();
 
     const result = await tropicalContract.payToMint(addr, 0, 1, '0x', {
-      value: ethers.utils.parseEther('0.05')
+      value: ethers.utils.parseEther('0.0025')
     });
 
     await result.wait();
