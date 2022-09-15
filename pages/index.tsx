@@ -4,35 +4,12 @@ import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax';
 import Navigation from '../components/Navigation';
 import { useRef } from 'react';
 
-const NAV_LINKS = [
-  {
-    label: 'Main Page',
-    link: '/'
-  },
-  {
-    label: 'About',
-    link: '/about'
-  },
-  {
-    label: 'Coin Exchange',
-    link: '/coin-exchange'
-  },
-  {
-    label: 'Soda Machine',
-    link: '/soda-machine'
-  },
-  {
-    label: 'Meet The Team',
-    link: '/meet-the-team'
-  },
-  {
-    label: 'References',
-    link: '/references'
-  }
-];
-
 const Home: NextPage = () => {
   const ref = useRef<IParallax>(null);
+
+  const scrollToTop = () => {
+    ref.current!.scrollTo(0);
+  };
 
   const scrollToCoinExchange = () => {
     ref.current!.scrollTo(6);
@@ -42,21 +19,41 @@ const Home: NextPage = () => {
     ref.current!.scrollTo(7);
   };
 
+  const NAV_LINKS = [
+    {
+      label: 'Main Page',
+      scrollTo: scrollToTop
+    },
+    {
+      label: 'About',
+      link: '/about'
+    },
+    {
+      label: 'Coin Exchange',
+      scrollTo: scrollToCoinExchange
+    },
+    {
+      label: 'Soda Machine',
+      scrollTo: scrollToSodaMachine
+    },
+    {
+      label: 'Meet The Team',
+      link: '/meet-the-team'
+    },
+    {
+      label: 'References',
+      link: '/references'
+    }
+  ];
+
   return (
     <>
-      <Navigation links={NAV_LINKS} />
-      <Button variant="subtle" onClick={scrollToCoinExchange}>
-        Scroll to Coin Exchange
-      </Button>
-      <br />
-      <Button variant="subtle" onClick={scrollToSodaMachine}>
-        Scroll to Soda Machine
-      </Button>
+      <Navigation links={NAV_LINKS} selected="Main Page" />
       <Parallax pages={10} ref={ref}>
         <ParallaxLayer
           style={{
             backgroundSize: 'cover',
-            backgroundImage: '/public/backgrounds/0.svg'
+            backgroundImage: 'url(/backgrounds/0.svg)'
           }}
         >
           <Title order={1} align="center" color="violet">
@@ -71,7 +68,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={1}
-          style={{ backgroundSize: 'cover', backgroundColor: 'purple' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/1.svg)'
+          }}
         >
           <Title align="center" color="orange">
             {' '}
@@ -83,7 +83,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={2}
-          style={{ backgroundSize: 'cover', backgroundColor: 'orange' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/2.svg)'
+          }}
         >
           <Title align="center" color="pink">
             {' '}
@@ -97,7 +100,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={3}
-          style={{ backgroundSize: 'cover', backgroundColor: 'pink' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/3.svg)'
+          }}
         >
           <Title align="center" color="lime">
             {' '}
@@ -117,7 +123,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={4}
-          style={{ backgroundSize: 'cover', backgroundColor: 'maroon' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/4.svg)'
+          }}
         >
           <Title align="center" color="teal">
             {' '}
@@ -129,7 +138,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={5}
-          style={{ backgroundSize: 'cover', backgroundColor: 'gold' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/5.svg)'
+          }}
         >
           <Title align="center" color="green">
             {' '}
@@ -142,7 +154,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={6}
-          style={{ backgroundSize: 'cover', backgroundColor: 'lime' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/6.svg)'
+          }}
         >
           <Title align="center" color="blue">
             {' '}
@@ -154,7 +169,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={7}
-          style={{ backgroundSize: 'cover', backgroundColor: 'orange' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/7.svg)'
+          }}
         >
           <Title align="center" color="cyan">
             {' '}
@@ -164,7 +182,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={8}
-          style={{ backgroundSize: 'cover', backgroundColor: 'pink' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/8.svg)'
+          }}
         >
           <Title align="center" color="grape">
             {' '}
@@ -186,7 +207,10 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer
           offset={9}
-          style={{ backgroundSize: 'cover', backgroundColor: 'purple' }}
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: 'url(/backgrounds/9.svg)'
+          }}
         >
           <Title align="center" color="violet">
             {' '}

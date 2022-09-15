@@ -93,34 +93,84 @@ const useStyles = createStyles((theme) => ({
   }
 }));
 
-interface HeaderResponsiveProps {
-  links: { link: string; label: string }[];
+const NAV_LINKS = [
+  {
+    label: 'Main Page',
+    link: '/'
+  },
+  {
+    label: 'About',
+    link: '/about'
+  },
+  {
+    label: 'Meet The Team',
+    link: '/meet-the-team'
+  },
+  {
+    label: 'References',
+    link: '/references'
+  }
+];
+
+interface ObjectWithScrollTo {
+  link?: never;
+  label: string;
+  scrollTo: () => void;
 }
 
-const Navigation = ({ links }: HeaderResponsiveProps) => {
+interface ObjectWithLink {
+  link: string;
+  label: string;
+  scrollTo?: never;
+}
+
+interface HeaderResponsiveProps {
+  links?: (ObjectWithScrollTo | ObjectWithLink)[];
+  selected: string;
+}
+
+const Navigation = ({ links = NAV_LINKS, selected }: HeaderResponsiveProps) => {
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [active, setActive] = useState(selected);
   const { classes, cx } = useStyles();
 
-  const items = links.map((link) => (
-    <Link key={link.label} href={link.link}>
+  const items = links.map((link) => {
+    const retVal = link.scrollTo ? (
       <a
         key={link.label}
         className={cx(classes.link, {
-          [classes.linkActive]: active === link.link
+          [classes.linkActive]: active === link.label
         })}
         onClick={() => {
-          setActive(link.link);
+          link.scrollTo?.();
+          setActive(link.label);
           close();
         }}
       >
         {link.label}
       </a>
-    </Link>
-  ));
+    ) : (
+      <Link key={link.label} href={link.link!}>
+        <a
+          key={link.label}
+          className={cx(classes.link, {
+            [classes.linkActive]: active === link.label
+          })}
+          onClick={() => {
+            setActive(link.label);
+            close();
+          }}
+        >
+          {link.label}
+        </a>
+      </Link>
+    );
+
+    return retVal;
+  });
 
   return (
-    <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
+    <Header height={HEADER_HEIGHT} mb={0} className={classes.root}>
       <Container className={classes.header}>
         <Link href={'/'}>
           <a>
