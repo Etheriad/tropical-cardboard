@@ -72,7 +72,8 @@ const useStyles = createStyles((theme) => ({
       backgroundColor:
         theme.colorScheme === 'dark'
           ? theme.colors.dark[6]
-          : theme.colors.gray[0]
+          : theme.colors.gray[0],
+      cursor: 'pointer'
     },
 
     [theme.fn.smallerThan('sm')]: {
@@ -101,6 +102,14 @@ const NAV_LINKS = [
   {
     label: 'About',
     link: '/about'
+  },
+  {
+    label: 'Coin Exchange',
+    link: '/#coin-exchange'
+  },
+  {
+    label: 'Soda Machine',
+    link: '/#soda-machine'
   },
   {
     label: 'Meet The Team',

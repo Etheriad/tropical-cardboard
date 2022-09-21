@@ -2,10 +2,29 @@ import { Title, Button } from '@mantine/core';
 import type { NextPage } from 'next';
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax';
 import Navigation from '../components/Navigation';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+
+const COIN_EXCHANGE_HASH = '#coin-exchange';
+const SODA_MACHINE_HASH = '#soda-machine';
 
 const Home: NextPage = () => {
   const ref = useRef<IParallax>(null);
+
+  useEffect(() => {
+    const { hash } = window.location;
+
+    if (!hash) {
+      return;
+    }
+
+    if (hash === COIN_EXCHANGE_HASH) {
+      scrollToCoinExchange();
+    }
+
+    if (hash === SODA_MACHINE_HASH) {
+      scrollToSodaMachine();
+    }
+  }, []);
 
   const scrollToTop = () => {
     ref.current!.scrollTo(0);
