@@ -37,11 +37,9 @@ const TropicalCardboardMint = () => {
   };
 
   return (
-    <>
-      <Button variant="outline" onClick={() => mintToken()}>
-        Mint!
-      </Button>
-    </>
+    <Button variant="outline" onClick={() => mintToken()}>
+      Mint!
+    </Button>
   );
 };
 
