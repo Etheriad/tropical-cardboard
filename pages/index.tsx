@@ -3,6 +3,8 @@ import type { NextPage } from 'next';
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax';
 import Navigation from '../components/Navigation';
 import { useEffect, useRef } from 'react';
+import CoinExchange from '../components/CoinExchange';
+import SodaMachine from '../components/SodaMachine';
 
 const COIN_EXCHANGE_HASH = '#coin-exchange';
 const SODA_MACHINE_HASH = '#soda-machine';
@@ -185,6 +187,7 @@ const Home: NextPage = () => {
             be gone, but dont worry, you can buy more tokens while supplies
             last.
           </Title>
+          <CoinExchange />
         </ParallaxLayer>
         <ParallaxLayer
           offset={7}
@@ -198,6 +201,7 @@ const Home: NextPage = () => {
             Choose which sodaphones you want, and confirm the transaction in
             your wallet.
           </Title>
+          <SodaMachine />
         </ParallaxLayer>
         <ParallaxLayer
           offset={8}

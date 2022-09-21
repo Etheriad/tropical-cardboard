@@ -26,9 +26,9 @@ const CoinMachine: FC = () => {
       <button onClick={() => setOpened(true)}>
         <Image
           alt="Coin Slot Machine"
-          src={'/images/coin-exchange.jpeg'}
-          width={500}
-          height={500}
+          src={'/images/coin-exchange.png'}
+          width={1000}
+          height={1000}
         ></Image>
       </button>
     </Center>
