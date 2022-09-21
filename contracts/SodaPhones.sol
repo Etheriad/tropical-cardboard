@@ -16,7 +16,9 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
 
     address TROPICAL_CARDBOARD_COIN_ADDRESS = 0xE1BaF4fE79fa56B6200c2D6bdf077EBa483b7658;
 
-    constructor() ERC721("SodaPhones", "SDP") {}
+    constructor(address tropCardboardCoinAddress) ERC721("SodaPhones", "SDP") {
+        TROPICAL_CARDBOARD_COIN_ADDRESS = tropCardboardCoinAddress;
+    }
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://ipfs.io/ipfs/QmUwf8PDyrYo9BisiL3LQqHDSMtyZk9jqBx4dsyeMU7Lh3/";
@@ -56,11 +58,9 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
         uint256 tropCardboardBalance = tcc.getBalance(recipient);
 
         // Must be an owner of TropicalCarboardCoin
-        require(tropCardboardBalance >= 1);
+        require(tropCardboardBalance >= 1, "Must own a TropicalCardboardCoin!");
         // Supply must not be exceeded
         require(existingURIs[metadataURI] <= 10, "Max supply reached!");
-        // Sender must send payment
-        require (msg.value >= 0.05 ether, "Need to pay up!");
 
         // Burn one Tropical Cardboard Coin
         tcc.burn(recipient, 0, 1);
