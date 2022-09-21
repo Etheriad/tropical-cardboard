@@ -4,7 +4,25 @@ import type { NextPage } from 'next';
 const About: NextPage = () => {
   return (
     <Center>
-      <Text>About</Text>
+      <Text>About the project</Text>
+      <Text>
+        This project is meant to help educate anyone who is interested in
+        cryptocurrencies, blockchains, the MetaVerse, and Web3. This is a huge
+        space that spans many different topics that often include cutting edge
+        technology that can seem complex. Its an exciteing place to explore and
+        learn. I&apos;ve always learned best with hands on experience. In
+        cryptocurrencies, that means putting some skin in the game since it has
+        to do primarily with finances and money. This can make it a much more
+        difficult place to explore since there are lots of barriers to be able
+        to even participate. how do you even buy cryptocurrency? How do you make
+        sure you arent hacked, or more often, scammed out of your valuable
+        assets? There can be a lot of fear, uncertainty, and doubt. My aim with
+        this project is to cut down some of those barriers to entry and give you
+        a starting place to begin learning about these complex topics in a
+        simple way. I picked an activity I think most people are familiar with,
+        buying a soda out of a soda machine, but doing it all with
+        cyrptocurrencies and digital assets of the metaVerse, NFTs.
+      </Text>
     </Center>
   );
 };
