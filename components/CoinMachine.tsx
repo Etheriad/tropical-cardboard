@@ -1,35 +1,40 @@
 import MintModal from './MintModal';
-import { useState, useEffect, FC } from 'react';
+import { useState, FC } from 'react';
 import Image from 'next/image';
-import Install from './Install';
-import { Center, LoadingOverlay } from '@mantine/core';
+import { Center } from '@mantine/core';
+import MetaMaskModal from './MetaMaskModal';
+import coinMachine from '../public/images/coin-exchange.png';
 
 declare let window: any;
 
 const CoinMachine: FC = () => {
-  const [onServer, setOnServer] = useState(true);
-  const [opened, setOpened] = useState<boolean>(false);
+  const [isMetaMaskModalOpened, setIsMetaMaskModalOpened] =
+    useState<boolean>(false);
+  const [isMintModalOpened, setIsMintModalOpened] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (window) setOnServer(false);
-  }, []);
-
-  if (onServer) return <LoadingOverlay visible={onServer} />;
-
-  if (!window.ethereum) {
-    return <Install />;
-  }
+  const handleClick = () => {
+    if (!window?.ethereum) {
+      setIsMetaMaskModalOpened(true);
+    } else {
+      setIsMintModalOpened(true);
+    }
+  };
 
   return (
     <Center>
-      <MintModal {...{ opened, setOpened }} />
-      <button onClick={() => setOpened(true)}>
+      <MintModal opened={isMintModalOpened} setOpened={setIsMintModalOpened} />
+      <MetaMaskModal
+        opened={isMetaMaskModalOpened}
+        setOpened={setIsMetaMaskModalOpened}
+      />
+      <button onClick={handleClick}>
         <Image
+          priority
           alt="Coin Slot Machine"
-          src={'/images/coin-exchange.png'}
-          width={1000}
-          height={1000}
-        ></Image>
+          src={coinMachine}
+          width={900}
+          height={900}
+        />
       </button>
     </Center>
   );

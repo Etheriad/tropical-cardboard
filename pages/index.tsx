@@ -33,7 +33,7 @@ const Home: NextPage = () => {
   };
 
   const scrollToCoinExchange = () => {
-    ref.current!.scrollTo(6);
+    ref.current!.scrollTo(5);
   };
 
   const scrollToSodaMachine = () => {
@@ -158,6 +158,7 @@ const Home: NextPage = () => {
           </Title>
         </ParallaxLayer>
         <ParallaxLayer
+          id="coin-machine"
           offset={5}
           style={{
             backgroundSize: 'cover',
@@ -172,6 +173,7 @@ const Home: NextPage = () => {
             spin around. If you want, you can keep them as a souvineer in your
             wallet (like an arcade token).
           </Title>
+          <CoinExchange />
         </ParallaxLayer>
         <ParallaxLayer
           offset={6}
@@ -187,9 +189,9 @@ const Home: NextPage = () => {
             be gone, but dont worry, you can buy more tokens while supplies
             last.
           </Title>
-          <CoinExchange />
         </ParallaxLayer>
         <ParallaxLayer
+          id="soda-machine"
           offset={7}
           style={{
             backgroundSize: 'cover',
