@@ -68,7 +68,7 @@ const Home: NextPage = () => {
   ];
 
   return (
-    <>
+    <div className="fixed h-screen w-screen">
       <Navigation links={NAV_LINKS} selected="Main Page" />
       <Parallax pages={10} ref={ref}>
         <ParallaxLayer
@@ -244,7 +244,7 @@ const Home: NextPage = () => {
           </Title>
         </ParallaxLayer>
       </Parallax>
-    </>
+    </div>
   );
 };
 
