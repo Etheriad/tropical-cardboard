@@ -99,7 +99,7 @@ const Home: NextPage = () => {
             Hello and welcome to the MetaVerse! Why dont you grab a soda while
             while we look around. You&apos;ve probably heard a lot of buzzwords
             and crazy stories, and have some questions about what it all means.
-            Lets learn some basics.
+            Let&apos;s learn some basics.
           </Title>
         </ParallaxLayer>
         <ParallaxLayer
@@ -111,11 +111,11 @@ const Home: NextPage = () => {
         >
           <Title align="center" color="pink">
             {' '}
-            As you may have guessed you cant buy a soda in the MetaVerse with
-            regular money. Youll money that works in the MetaVerse. Typically
-            thats called cryptocurrency. There are alots of different types of
-            cryptocurriences. Our money exchanger uses the Polygon
-            Cryptocurrencie called MATIC. But in order to hold cryptocurrencies,
+            As you may have guessed, you cant buy a soda in the MetaVerse with
+            regular money. You&apos;ll need money that works in the MetaVerse. Typically
+            that&apos;s called cryptocurrency. There are alot of different types of
+            cryptocurriences. Bitcoin was the first one. Our money exchanger uses the Ethereum
+            Cryptocurrency called Ether or Eth for short. But in order to hold cryptocurrencies,
             your going to need a special wallet for the Metaverse.
           </Title>
         </ParallaxLayer>
@@ -129,8 +129,10 @@ const Home: NextPage = () => {
           <Title align="center" color="lime">
             {' '}
             Just like in real life, you&apos;ll need to keep your wallet safe as
-            its where your money is. Dont ever store your seed phrase on your
-            computer are share it with anyone.
+            it&apos;s where you keep your money. Our favorite wallet is provided by MetaMask. 
+            They have great support documents on their website if you need help. Remember,
+            Don&apos;t ever store your seed phrase on your computer or share it with anyone.
+            Write your seed phrase down and keep it safe.
           </Title>
           <Button
             variant="outline"
@@ -139,7 +141,7 @@ const Home: NextPage = () => {
             target="_blank"
             href="https://metamask.io/download.html"
           >
-            Download MetaMask
+            Download the MetaMask wallet here
           </Button>
         </ParallaxLayer>
         <ParallaxLayer
@@ -151,10 +153,10 @@ const Home: NextPage = () => {
         >
           <Title align="center" color="teal">
             {' '}
-            Now that we have our new wallet for the MetaVerse, lets buy some
-            cryptocurrency. Visit this exchange. I recommend starting with a
-            small amount like 5-10 Matic to Start. If just want to buy a soda,
-            youll only need 1 MATIC.
+            Now that we have our new wallet for the MetaVerse, let&apos;s buy some
+            cryptocurrency. You can buy directly in your Metamask wallet. I recommend starting with a
+            small amount like 0.001 Eth to Start. You can buy fractions of an Eth,
+            which is good because as Eth has gained popularity, it&apos;s become more expensive to buy.
           </Title>
         </ParallaxLayer>
         <ParallaxLayer
@@ -201,7 +203,7 @@ const Home: NextPage = () => {
           <Title align="center" color="cyan">
             {' '}
             Choose which sodaphones you want, and confirm the transaction in
-            your wallet.
+            your wallet. This is usually referred to as minting when you are buying something new like this.
           </Title>
           <SodaMachine />
         </ParallaxLayer>
@@ -214,10 +216,10 @@ const Home: NextPage = () => {
         >
           <Title align="center" color="grape">
             {' '}
-            Contrats on your new Sodaphone! We hope you enjoy your soda while
+            Congratulations on your new Sodaphone! We hope you enjoy your soda while
             you explore the MetaVerse. You can view your soda on many different
-            platoforms like Opensea and LooksRare. There are marketplaces where
-            items are sold and traded. This is your soda. you can choose to sell
+            platforms like Opensea and LooksRare. These are marketplaces where
+            items are sold and traded. This is your soda. You can choose to sell
             it or give it away if you would like.
           </Title>
           <Button
@@ -227,7 +229,7 @@ const Home: NextPage = () => {
             target="_blank"
             href="https://opensea.io/account?tab=collected"
           >
-            Go to OpenSea!
+            Go to OpenSea to see your soda!
           </Button>
         </ParallaxLayer>
         <ParallaxLayer
@@ -239,8 +241,9 @@ const Home: NextPage = () => {
         >
           <Title align="center" color="violet">
             {' '}
-            Stay tuend for more things in the MetaVerse from Tropical Cardboard.
-            let us know if you have any questions and we can explore together.
+            Stay tuned for more things in the MetaVerse from Tropical Cardboard. There is alot to
+            explore and we can&apos;t wait to see what new innovations happen that make our lives better.
+            Let us know if you have any questions and we can explore together.
           </Title>
         </ParallaxLayer>
       </Parallax>
