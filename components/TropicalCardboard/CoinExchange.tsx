@@ -1,6 +1,6 @@
 import { Center, Stack } from '@mantine/core';
 import { FC } from 'react';
-import CoinMachine from '../components/CoinMachine';
+import CoinMachine from './CoinMachine';
 
 const CoinExchange: FC = () => {
   return (

@@ -1,7 +1,6 @@
 import { Button, Group, Modal } from '@mantine/core';
 import { FC, Dispatch, SetStateAction } from 'react';
 import TropicalCardboardMint from './TropicalCardboardMint';
-import WalletBalance from './WalletBalance';
 
 interface ModalState {
   opened: boolean;
@@ -23,7 +22,6 @@ const MintModal: FC<ModalState> = ({ opened, setOpened }) => {
         <TropicalCardboardMint />
         <Button variant="outline">Connect Wallet</Button>
       </Group>
-      <WalletBalance />
     </Modal>
   );
 };
