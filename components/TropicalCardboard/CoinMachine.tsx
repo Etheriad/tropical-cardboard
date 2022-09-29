@@ -1,9 +1,9 @@
 import MintModal from './MintModal';
 import { useState, FC } from 'react';
 import Image from 'next/image';
-import { Center } from '@mantine/core';
-import MetaMaskModal from './MetaMaskModal';
-import coinMachine from '../public/images/coin-exchange.png';
+import { Center, Container } from '@mantine/core';
+import { MetaMaskModal } from '../../common/Modals';
+import coinMachine from '../../public/images/coin-exchange.png';
 
 declare let window: any;
 
@@ -27,15 +27,15 @@ const CoinMachine: FC = () => {
         opened={isMetaMaskModalOpened}
         setOpened={setIsMetaMaskModalOpened}
       />
-      <button onClick={handleClick}>
+      <Container size="md" className="relative block">
         <Image
+          onClick={handleClick}
+          className="cursor-pointer"
           priority
           alt="Coin Slot Machine"
           src={coinMachine}
-          width={900}
-          height={900}
         />
-      </button>
+      </Container>
     </Center>
   );
 };

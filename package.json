@@ -22,6 +22,7 @@
     "next": "12.1.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "sharp": "^0.31.0",
     "type-coverage": "^2.21.1"
   },
   "devDependencies": {

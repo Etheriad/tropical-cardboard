@@ -1,7 +1,9 @@
 import { Button } from '@mantine/core';
 // eslint-disable-next-line node/no-unpublished-import
 import { ethers } from 'ethers';
-import TropicalCardboardCoin from '../artifacts/contracts/TropicalCardboardCoin.sol/TropicalCardboardCoin.json';
+import { FC } from 'react';
+import TropicalCardboardCoin from '../../artifacts/contracts/TropicalCardboardCoin.sol/TropicalCardboardCoin.json';
+import { TROPICAL_CARDBOARD_COIN } from '../../constants/contracts';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -10,10 +12,10 @@ declare global {
   }
 }
 
-const TropicalCardboardMint = () => {
+const TropicalCardboardMint: FC = () => {
   const mintToken = async () => {
     // TropicalCardboardCoin
-    const contractAddress = '0x1702Fe3AEE8804366fd8B5D6822c1aD0d1e8FD7A';
+    const contractAddress = TROPICAL_CARDBOARD_COIN.address;
 
     const provider = new ethers.providers.Web3Provider(window.ethereum!);
 

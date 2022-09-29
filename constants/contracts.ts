@@ -1,0 +1,9 @@
+const TROPICAL_CARDBOARD_COIN = {
+  address: '0x1702Fe3AEE8804366fd8B5D6822c1aD0d1e8FD7A'
+};
+
+const SODA_PHONES = {
+  address: ''
+};
+
+export { TROPICAL_CARDBOARD_COIN, SODA_PHONES };

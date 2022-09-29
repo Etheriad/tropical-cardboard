@@ -1,6 +1,6 @@
 import { Card, Center, Container, Text } from '@mantine/core';
 import type { NextPage } from 'next';
-import Navigation from '../components/Navigation';
+import { Navigation } from '../common/Navigation';
 
 const About: NextPage = () => {
   return (

@@ -1,7 +1,7 @@
 import { Center, Stack } from '@mantine/core';
 import { FC } from 'react';
 import Image from 'next/image';
-import sodaMachine from '../public/images/soda-machine.png';
+import sodaMachine from '../../public/images/soda-machine.png';
 
 const SodaMachine: FC = () => {
   return (
@@ -9,11 +9,10 @@ const SodaMachine: FC = () => {
       <Stack>
         <Center>
           <Image
+            className="h-5"
             priority
             alt="Soda Machine"
             src={sodaMachine}
-            width={900}
-            height={900}
           />
         </Center>
       </Stack>
