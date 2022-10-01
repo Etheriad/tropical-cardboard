@@ -11,6 +11,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
+import ConnectWalletButton from './ConnectWalletButton';
 
 const HEADER_HEIGHT = 60;
 
@@ -194,6 +195,7 @@ const Navigation = ({ links = NAV_LINKS, selected }: HeaderResponsiveProps) => {
         </Link>
         <Group spacing={5} className={classes.links}>
           {items}
+          <ConnectWalletButton />
         </Group>
 
         <Burger

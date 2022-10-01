@@ -1,13 +1,21 @@
-import { Title, Button, Container } from '@mantine/core';
+import { Title, Container } from '@mantine/core';
 import type { NextPage } from 'next';
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { Navigation } from '../common/Navigation';
 import { useEffect, useRef } from 'react';
 import { CoinExchange } from '../components/TropicalCardboard';
 import { SodaMachine } from '../components/SodaPhones';
+import { ParallaxCardGenerator } from '../common/Cards';
 
 const COIN_EXCHANGE_HASH = '#coin-exchange';
 const SODA_MACHINE_HASH = '#soda-machine';
+
+const classes = {
+  container: {
+    row: 'flex items-center justify-center h-screen',
+    col: 'flex flex-col items-center justify-center h-screen'
+  }
+};
 
 const Home: NextPage = () => {
   const ref = useRef<IParallax>(null);
@@ -77,15 +85,17 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/0.svg)'
           }}
         >
-          <Title order={1} align="center" color="violet">
-            Welcome to the
-          </Title>
-          <Title order={1} weight={700} italic align="center" color="violet">
-            MetaVerse!
-          </Title>
-          <Title order={1} align="center" color="violet">
-            Grab a soda
-          </Title>
+          <Container className={classes.container.col}>
+            <Title order={1} align="center" color="violet">
+              Welcome to the
+            </Title>
+            <Title order={1} weight={700} italic align="center" color="violet">
+              MetaVerse!
+            </Title>
+            <Title order={1} align="center" color="violet">
+              Grab a soda!
+            </Title>
+          </Container>
         </ParallaxLayer>
         <ParallaxLayer
           offset={1}
@@ -94,13 +104,15 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/1.svg)'
           }}
         >
-          <Title align="center" color="orange">
-            {' '}
-            Hello and welcome to the MetaVerse! Why dont you grab a soda while
-            while we look around. You&apos;ve probably heard a lot of buzzwords
-            and crazy stories, and have some questions about what it all means.
-            Let&apos;s learn some basics.
-          </Title>
+          <Container className={classes.container.row}>
+            <ParallaxCardGenerator
+              title="Hello and Welcome to the MetaVerse!"
+              text="Why dont you grab a soda while
+              while we look around. You've probably heard a lot of buzzwords
+              and crazy stories, and have some questions about what it all means.
+              Let's learn some basics."
+            />
+          </Container>
         </ParallaxLayer>
         <ParallaxLayer
           offset={2}
@@ -109,16 +121,17 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/2.svg)'
           }}
         >
-          <Title align="center" color="pink">
-            {' '}
-            As you may have guessed, you cant buy a soda in the MetaVerse with
-            regular money. You&apos;ll need money that works in the MetaVerse.
-            Typically that&apos;s called cryptocurrency. There are alot of
+          <Container className={classes.container.row}>
+            <ParallaxCardGenerator
+              text="As you may have guessed, you cant buy a soda in the MetaVerse with
+            regular money. You'll need money that works in the MetaVerse.
+            Typically that's called cryptocurrency. There are alot of
             different types of cryptocurriences. Bitcoin was the first one. Our
             money exchanger uses the Ethereum Cryptocurrency called Ether or Eth
             for short. But in order to hold cryptocurrencies, your going to need
-            a special wallet for the Metaverse.
-          </Title>
+            a special wallet for the Metaverse."
+            />
+          </Container>
         </ParallaxLayer>
         <ParallaxLayer
           offset={3}
@@ -127,24 +140,20 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/3.svg)'
           }}
         >
-          <Title align="center" color="lime">
-            {' '}
-            Just like in real life, you&apos;ll need to keep your wallet safe as
-            it&apos;s where you keep your money. Our favorite wallet is provided
-            by MetaMask. They have great support documents on their website if
-            you need help. Remember, Don&apos;t ever store your seed phrase on
-            your computer or share it with anyone. Write your seed phrase down
-            and keep it safe.
-          </Title>
-          <Button
-            variant="outline"
-            color="orange"
-            component="a"
-            target="_blank"
-            href="https://metamask.io/download.html"
-          >
-            Download the MetaMask wallet here
-          </Button>
+          <Container className={classes.container.row}>
+            <ParallaxCardGenerator
+              text="Just like in real life, you'll need to keep your wallet safe as
+              it's where you keep your money. Our favorite wallet is provided
+              by MetaMask. They have great support documents on their website if
+              you need help. Remember, Don't ever store your seed phrase on
+              your computer or share it with anyone. Write your seed phrase down
+              and keep it safe."
+              button={{
+                href: 'https://metamask.io/download.html',
+                text: 'Download the MetaMask wallet here'
+              }}
+            />
+          </Container>
         </ParallaxLayer>
         <ParallaxLayer
           offset={4}
@@ -153,34 +162,34 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/4.svg)'
           }}
         >
-          <Title align="center" color="teal">
-            {' '}
-            Now that we have our new wallet for the MetaVerse, let&apos;s buy
-            some cryptocurrency. You can buy directly in your Metamask wallet. I
-            recommend starting with a small amount like 0.001 Eth to Start. You
-            can buy fractions of an Eth, which is good because as Eth has gained
-            popularity, it&apos;s become more expensive to buy.
-          </Title>
+          <Container className={classes.container.row}>
+            <ParallaxCardGenerator
+              text="Now that we have our new wallet for the MetaVerse, let's buy
+              some cryptocurrency. You can buy directly in your Metamask wallet. I
+              recommend starting with a small amount like 0.001 Eth to Start. You
+              can buy fractions of an Eth, which is good because as Eth has gained
+              popularity, it's become more expensive to buy."
+            />
+          </Container>
         </ParallaxLayer>
         <ParallaxLayer
-          id="coin-machine"
+          id="coin-exchange"
           offset={5}
           style={{
             backgroundSize: 'cover',
             backgroundImage: 'url(/backgrounds/5.svg)'
           }}
         >
-          <Container>
-            <Title align="center" color="green">
-              {' '}
-              Now that you have money(cryptocurrency) for the MetaVerse in your
-              new wallet, you can buy the special token that the vending machine
-              takes. Somebody took the time to make these tokens look cool and
-              spin around. If you want, you can keep them as a souvineer in your
-              wallet (like an arcade token).
-            </Title>
+          <Container className={classes.container.col}>
+            <ParallaxCardGenerator
+              text="Now that you have money (cryptocurrency) for the MetaVerse in your
+            new wallet, you can buy the special token that the vending machine
+            takes. Somebody took the time to make these tokens look cool and
+            spin around. If you want, you can keep them as a souvineer in your
+            wallet (like an arcade token)."
+            />
+            <CoinExchange />
           </Container>
-          <CoinExchange />
         </ParallaxLayer>
         <ParallaxLayer
           offset={6}
@@ -189,13 +198,14 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/6.svg)'
           }}
         >
-          <Title align="center" color="blue">
-            {' '}
-            With your new Tropical Cardboard Token, you can go to the vending
-            machine and buy yourself a soda! Once you spend your token, it will
-            be gone, but dont worry, you can buy more tokens while supplies
-            last.
-          </Title>
+          <Container className={classes.container.row}>
+            <ParallaxCardGenerator
+              text="With your new Tropical Cardboard Token, you can go to the vending
+                machine and buy yourself a soda! Once you spend your token, it will
+                be gone, but dont worry, you can buy more tokens while supplies
+                last."
+            />
+          </Container>
         </ParallaxLayer>
         <ParallaxLayer
           id="soda-machine"
@@ -205,13 +215,14 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/7.svg)'
           }}
         >
-          <Title align="center" color="cyan">
-            {' '}
-            Choose which sodaphones you want, and confirm the transaction in
-            your wallet. This is usually referred to as minting when you are
-            buying something new like this.
-          </Title>
-          <SodaMachine />
+          <Container className={classes.container.col}>
+            <ParallaxCardGenerator
+              text="Choose which sodaphones you want, and confirm the transaction in
+              your wallet. This is usually referred to as minting when you are
+              buying something new like this."
+            />
+            <SodaMachine />
+          </Container>
         </ParallaxLayer>
         <ParallaxLayer
           offset={8}
@@ -220,23 +231,19 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/8.svg)'
           }}
         >
-          <Title align="center" color="grape">
-            {' '}
-            Congratulations on your new Sodaphone! We hope you enjoy your soda
-            while you explore the MetaVerse. You can view your soda on many
-            different platforms like Opensea and LooksRare. These are
-            marketplaces where items are sold and traded. This is your soda. You
-            can choose to sell it or give it away if you would like.
-          </Title>
-          <Button
-            variant="outline"
-            color="orange"
-            component="a"
-            target="_blank"
-            href="https://opensea.io/account?tab=collected"
-          >
-            Go to OpenSea to see your soda!
-          </Button>
+          <Container className={classes.container.row}>
+            <ParallaxCardGenerator
+              text="Congratulations on your new Sodaphone! We hope you enjoy your soda
+              while you explore the MetaVerse. You can view your soda on many
+              different platforms like Opensea and LooksRare. These are
+              marketplaces where items are sold and traded. This is your soda. You
+              can choose to sell it or give it away if you would like."
+              button={{
+                text: 'Go to OpenSea to see your soda!',
+                href: 'https://opensea.io/account?tab=collected'
+              }}
+            />
+          </Container>
         </ParallaxLayer>
         <ParallaxLayer
           offset={9}
@@ -245,13 +252,14 @@ const Home: NextPage = () => {
             backgroundImage: 'url(/backgrounds/9.svg)'
           }}
         >
-          <Title align="center" color="violet">
-            {' '}
-            Stay tuned for more things in the MetaVerse from Tropical Cardboard.
-            There is alot to explore and we can&apos;t wait to see what new
-            innovations happen that make our lives better. Let us know if you
-            have any questions and we can explore together.
-          </Title>
+          <Container className={classes.container.row}>
+            <ParallaxCardGenerator
+              text="Stay tuned for more things in the MetaVerse from Tropical Cardboard.
+              There is alot to explore and we can't wait to see what new
+              innovations happen that make our lives better. Let us know if you
+              have any questions and we can explore together."
+            />
+          </Container>
         </ParallaxLayer>
       </Parallax>
     </div>

@@ -1,2 +1,3 @@
 import ProfileCardGenerator from './ProfileCardGenerator';
-export { ProfileCardGenerator };
+import ParallaxCardGenerator from './ParallaxCardGenerator';
+export { ProfileCardGenerator, ParallaxCardGenerator };
