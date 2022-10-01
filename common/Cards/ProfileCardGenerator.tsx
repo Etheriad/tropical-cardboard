@@ -20,7 +20,13 @@ const ProfileCardGenerator: FC<ProfileCardGeneratorProps> = ({
       <Center>
         <Card shadow="sm" p="lg" radius="md" withBorder>
           <Center>
-            <Card.Section className="relative w-24 h-24">
+            <Card.Section
+              style={{
+                position: 'relative',
+                width: '100px',
+                height: '100px'
+              }}
+            >
               <Image src={image} layout="fill" alt={alt} />
             </Card.Section>
           </Center>

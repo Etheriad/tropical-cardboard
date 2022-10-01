@@ -1,6 +1,6 @@
-import { Button, Group, Modal } from '@mantine/core';
+import { Group, Modal } from '@mantine/core';
 import { FC, Dispatch, SetStateAction } from 'react';
-import TropicalCardboardMint from './TropicalCardboardMint';
+import SodaPhonesMint from './SodaPhonesMint';
 
 interface ModalState {
   opened: boolean;
@@ -16,11 +16,10 @@ const MintModal: FC<ModalState> = ({ opened, setOpened }) => {
       centered
       opened={opened}
       onClose={() => setOpened(false)}
-      title="0.0025 Ethereum"
+      title="One Tropical Cardboard Token"
     >
       <Group className="flex flex-row gap-4 justify-center">
-        <TropicalCardboardMint />
-        <Button variant="outline">Connect Wallet</Button>
+        <SodaPhonesMint />
       </Group>
     </Modal>
   );

@@ -29,11 +29,7 @@ const MetaMaskModal: FC<ModalState> = ({ opened, setOpened }) => {
             {ALERT_CONTENT}
             <br />
             <Center>
-              <Button
-                variant="outline"
-                color="red"
-                className="hover:bg-red-100"
-              >
+              <Button color="red" className="hover:bg-red-100">
                 <Anchor target="_blank" href={META_MASK_LINK} color="red">
                   Meta Mask
                 </Anchor>

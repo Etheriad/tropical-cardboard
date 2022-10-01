@@ -1,22 +1,43 @@
-import { Center, Stack } from '@mantine/core';
-import { FC } from 'react';
+import { Container } from '@mantine/core';
+import { FC, useState } from 'react';
 import Image from 'next/image';
 import sodaMachine from '../../public/images/soda-machine.png';
+import SodaPhonesMintModal from './SodaPhonesMintModal';
+import { MetaMaskModal } from '../../common/Modals';
 
 const SodaMachine: FC = () => {
+  const [isMetaMaskModalOpened, setIsMetaMaskModalOpened] =
+    useState<boolean>(false);
+  const [isMintModalOpened, setIsMintModalOpened] = useState<boolean>(false);
+
+  const handleClick = () => {
+    if (!window?.ethereum) {
+      setIsMetaMaskModalOpened(true);
+    } else {
+      setIsMintModalOpened(true);
+    }
+  };
+
   return (
-    <>
-      <Stack>
-        <Center>
-          <Image
-            className="h-5"
-            priority
-            alt="Soda Machine"
-            src={sodaMachine}
-          />
-        </Center>
-      </Stack>
-    </>
+    <Container className="relative h-full w-full">
+      <SodaPhonesMintModal
+        opened={isMintModalOpened}
+        setOpened={setIsMintModalOpened}
+      />
+      <MetaMaskModal
+        opened={isMetaMaskModalOpened}
+        setOpened={setIsMetaMaskModalOpened}
+      />
+      <Image
+        priority
+        onClick={handleClick}
+        className="cursor-pointer"
+        alt="Soda Machine"
+        src={sodaMachine}
+        layout="fill"
+        objectFit="contain"
+      />
+    </Container>
   );
 };
 
