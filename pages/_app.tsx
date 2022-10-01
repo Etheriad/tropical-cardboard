@@ -21,7 +21,14 @@ export default function App({ Component, pageProps }: AppProps) {
           /** Put your mantine theme override here */
           colorScheme: 'light',
           fontFamily: 'Gill Sans',
-          primaryColor: 'grape'
+          primaryColor: 'grape',
+          components: {
+            Button: {
+              defaultProps: {
+                variant: 'outline'
+              }
+            }
+          }
         }}
       >
         {/* <Navigation links={NAV_LINKS} /> */}

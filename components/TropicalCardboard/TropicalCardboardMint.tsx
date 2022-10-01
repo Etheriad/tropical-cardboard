@@ -8,7 +8,7 @@ import { TROPICAL_CARDBOARD_COIN } from '../../constants/contracts';
 declare global {
   // eslint-disable-next-line no-unused-vars
   interface Window {
-    ethereum?: ethers.providers.ExternalProvider;
+    ethereum?: any;
   }
 }
 
@@ -38,11 +38,7 @@ const TropicalCardboardMint: FC = () => {
     await result.wait();
   };
 
-  return (
-    <Button variant="outline" onClick={() => mintToken()}>
-      Mint!
-    </Button>
-  );
+  return <Button onClick={mintToken}>Mint!</Button>;
 };
 
 export default TropicalCardboardMint;

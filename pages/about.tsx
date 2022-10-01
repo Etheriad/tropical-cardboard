@@ -6,7 +6,7 @@ const About: NextPage = () => {
   return (
     <>
       <Navigation selected="About" />
-      <Center>
+      <Center className="mt-5">
         <Container>
           <Card shadow="sm" p="lg" radius="md" withBorder>
             <Text>
