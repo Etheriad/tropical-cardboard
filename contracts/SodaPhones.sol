@@ -14,7 +14,7 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
 
     mapping(string => uint8) existingURIs;
 
-    address public TROPICAL_CARDBOARD_COIN_ADDRESS = 0x1702Fe3AEE8804366fd8B5D6822c1aD0d1e8FD7A;
+    address public TROPICAL_CARDBOARD_COIN_ADDRESS;
 
     constructor(address tropCardboardCoinAddress) ERC721("SodaPhones", "SDP") {
         TROPICAL_CARDBOARD_COIN_ADDRESS = tropCardboardCoinAddress;

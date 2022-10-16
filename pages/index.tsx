@@ -1,4 +1,4 @@
-import { Title, Container, Grid, ScrollArea } from '@mantine/core';
+import { Title, Container } from '@mantine/core';
 import type { NextPage } from 'next';
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { Navigation } from '../common/Navigation';
