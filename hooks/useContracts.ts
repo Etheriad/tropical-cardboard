@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import SodaPhones from '../artifacts/contracts/SodaPhones.sol/SodaPhones.json';
 import TropicalCardboardCoin from '../artifacts/contracts/TropicalCardboardCoin.sol/TropicalCardboardCoin.json';
-import { SODA_PHONES, TROPICAL_CARDBOARD_COIN } from '../constants/contracts';
 
 type Signer = ethers.providers.JsonRpcSigner | null;
 type Contract = ethers.Contract | null;
@@ -16,24 +15,25 @@ const useContracts = () => {
   useEffect(() => {
     try {
       // SodaPhones;
-      const contractAddress = SODA_PHONES.address;
+      const sodaPhonesAddress = process.env.NEXT_PUBLIC_SODA_PHONES_ADDRESS!;
       const provider = new ethers.providers.Web3Provider(window.ethereum!);
 
       // get the end user
       const currSigner = provider.getSigner();
       // get the smart contract
       const sodaPhonesContract = new ethers.Contract(
-        contractAddress,
+        sodaPhonesAddress,
         SodaPhones.abi,
         currSigner
       );
 
       // TropicalCardboardCoin
-      const tropicalContractAddress = TROPICAL_CARDBOARD_COIN.address;
+      const tropicalCardboardAddress =
+        process.env.NEXT_PUBLIC_TROPICAL_CARDBOARD_COIN_ADDRESS!;
 
       // get the smart contract
       const tropicalContract = new ethers.Contract(
-        tropicalContractAddress,
+        tropicalCardboardAddress,
         TropicalCardboardCoin.abi,
         currSigner
       );

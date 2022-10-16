@@ -1,7 +1,6 @@
 import { Button, Container, Group, TextInput } from '@mantine/core';
 import { FC, useEffect, useState, useCallback } from 'react';
 import { useContracts } from '../../hooks/useContracts';
-import { SODA_PHONES } from '../../constants/contracts';
 import { coordinatesToFileName } from './coordinatesUtil';
 import {
   alertError,
@@ -18,7 +17,7 @@ const SodaPhonesMint: FC = () => {
     if (!tropicalCardboard || !signer) return;
     const resp = await tropicalCardboard.isApprovedForAll(
       await signer.getAddress(),
-      SODA_PHONES.address
+      process.env.NEXT_PUBLIC_SODA_PHONES_ADDRESS!
     );
 
     setIsApproved(resp);
@@ -41,7 +40,7 @@ const SodaPhonesMint: FC = () => {
 
     try {
       const res = await tropicalCardboard!.setApprovalForAll(
-        SODA_PHONES.address,
+        process.env.NEXT_PUBLIC_SODA_PHONES_ADDRESS!,
         true
       );
       alertTransactionSuccess(res.hash);
