@@ -27,8 +27,6 @@ describe('SodaPhones', () => {
     await sodaPhones.deployed();
 
     await tropicalCardboardCoin.setApprovalForAll(sodaPhones.address, true);
-
-    console.log(tropicalCardboardCoin.address);
   });
 
   beforeEach(async () => {
@@ -65,14 +63,46 @@ describe('SodaPhones', () => {
     expect(newTccBalance).to.equal(2);
     expect(newTccSupply).to.equal(2);
 
-    const sodaPhoneId = await sodaPhones.payToMint(recipient1, '1.json');
-
-    expect(sodaPhoneId).to.equal(1);
+    await sodaPhones.payToMint(recipient1, '1.json');
 
     const newSpBalance = await sodaPhones.balanceOf(recipient1);
     const newSp1Supply = await sodaPhones.getContentSupply('1.json');
 
     expect(newSpBalance).to.equal(1);
     expect(newSp1Supply).to.equal(1);
+  });
+
+  it('should deny mint after 12 minted', async () => {
+    await tropicalCardboardCoin.payToMint(recipient1, 0, 12, '0x', {
+      value: ethers.utils.parseEther('0.0025')
+    });
+    const promises = [...Array(12)].map(async () => {
+      return await sodaPhones.payToMint(recipient1, '2.json');
+    });
+
+    await Promise.all(promises);
+
+    const supplyFor2 = await sodaPhones.getContentSupply('2.json');
+
+    expect(supplyFor2).to.equal(12);
+    await expect(sodaPhones.payToMint(recipient1, '2.json')).to.be.revertedWith(
+      'Max supply reached!'
+    );
+  });
+
+  it('should not mint a SodaPhone if not approved for all', async () => {
+    await tropicalCardboardCoin.setApprovalForAll(sodaPhones.address, false);
+
+    await expect(sodaPhones.payToMint(recipient1, '1.json')).to.be.revertedWith(
+      'ERC1155: caller is not owner or not approved'
+    );
+  });
+
+  it('should set TCC address correctly', async () => {
+    await sodaPhones.setTropicalCardboardAddress(recipient2);
+
+    const newTCCAddress = await sodaPhones.TROPICAL_CARDBOARD_COIN_ADDRESS();
+
+    expect(newTCCAddress.toUpperCase()).to.equal(recipient2.toUpperCase());
   });
 });

@@ -1,44 +1,91 @@
 import { Button, Container, Group, TextInput } from '@mantine/core';
-// eslint-disable-next-line node/no-unpublished-import
-import { ethers } from 'ethers';
-import { FC } from 'react';
-import SodaPhones from '../../artifacts/contracts/SodaPhones.sol/SodaPhones.json';
+import { FC, useEffect, useState, useCallback } from 'react';
+import { useContracts } from '../../hooks/useContracts';
 import { SODA_PHONES } from '../../constants/contracts';
-
-declare global {
-  // eslint-disable-next-line no-unused-vars
-  interface Window {
-    ethereum?: any;
-  }
-}
+import { coordinatesToFileName } from './coordinatesUtil';
+import {
+  alertError,
+  alertTransactionSuccess
+} from '../../common/Alerts/alertUtil';
 
 const SodaPhonesMint: FC = () => {
-  const mintSodaPhone = async () => {
-    // SodaPhones;
-    const contractAddress = SODA_PHONES.address;
-    const provider = new ethers.providers.Web3Provider(window.ethereum!);
-    // get the end user
-    const signer = provider.getSigner();
-    // get the smart contract
-    const sodaPhonesContract = new ethers.Contract(
-      contractAddress,
-      SodaPhones.abi,
-      signer
+  const { signer, sodaPhones, tropicalCardboard } = useContracts();
+  const [coordinates, setCoordinates] = useState('');
+  const [isMintDisabled, setIsMintDisabled] = useState(false);
+  const [isApproved, setIsApproved] = useState(false);
+
+  const checkApproval = useCallback(async () => {
+    if (!tropicalCardboard || !signer) return;
+    const resp = await tropicalCardboard.isApprovedForAll(
+      await signer.getAddress(),
+      SODA_PHONES.address
     );
-    const addr = await signer.getAddress();
-    const result = await sodaPhonesContract.payToMint(addr, 0, 1, '0x', {
-      value: ethers.utils.parseEther('0.0025')
-    });
-    await result.wait();
+
+    setIsApproved(resp);
+  }, [signer, tropicalCardboard]);
+
+  useEffect(() => {
+    if (coordinatesToFileName(coordinates) || !isApproved) {
+      setIsMintDisabled(false);
+    } else {
+      setIsMintDisabled(true);
+    }
+  }, [coordinates, isApproved]);
+
+  useEffect(() => {
+    checkApproval();
+  }, [checkApproval]);
+
+  const approve = async () => {
+    if (!tropicalCardboard) return;
+
+    try {
+      const res = await tropicalCardboard!.setApprovalForAll(
+        SODA_PHONES.address,
+        true
+      );
+      alertTransactionSuccess(res.hash);
+      setIsApproved(true);
+    } catch (error) {
+      console.error(error);
+      alertError();
+      setIsApproved(false);
+    }
+  };
+
+  const mintSodaPhone = async () => {
+    if (!coordinatesToFileName(coordinates)) {
+      console.error('Invalid Input');
+      return;
+    }
+
+    const coordinatesToMint = coordinatesToFileName(coordinates);
+
+    try {
+      const addr = await signer!.getAddress();
+      const result = await sodaPhones!.payToMint(addr, coordinatesToMint);
+      await result.wait();
+
+      alertTransactionSuccess(result.hash);
+    } catch (error) {
+      console.error(error);
+      alertError();
+    }
   };
 
   return (
     <Container>
       <Group>
-        <TextInput placeholder="Choose your SodaPhone" />
-        <Button disabled={true} onClick={() => mintSodaPhone()}>
+        <TextInput
+          value={coordinates}
+          onChange={(e) => setCoordinates(e.target.value)}
+          placeholder="Choose your SodaPhone"
+          error={isMintDisabled && coordinates ? 'Invalid Input' : null}
+        />
+        <Button disabled={isMintDisabled} onClick={mintSodaPhone}>
           Mint!
         </Button>
+        {!isApproved && <Button onClick={approve}>Approve Soda Phones</Button>}
       </Group>
     </Container>
   );

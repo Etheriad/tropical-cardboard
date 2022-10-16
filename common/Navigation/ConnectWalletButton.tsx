@@ -20,10 +20,10 @@ const ConnectWalletButton: FC = () => {
       const accounts = await window.ethereum?.request({
         method: 'eth_accounts'
       });
-      if (accounts.length === 0) {
-        setIsConnected(false);
-      } else {
+      if (accounts.length) {
         setIsConnected(true);
+      } else {
+        setIsConnected(false);
       }
     } catch (error) {
       setIsConnected(false);

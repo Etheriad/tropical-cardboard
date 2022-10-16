@@ -14,7 +14,7 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
 
     mapping(string => uint8) existingURIs;
 
-    address TROPICAL_CARDBOARD_COIN_ADDRESS = 0xE1BaF4fE79fa56B6200c2D6bdf077EBa483b7658;
+    address public TROPICAL_CARDBOARD_COIN_ADDRESS = 0x1702Fe3AEE8804366fd8B5D6822c1aD0d1e8FD7A;
 
     constructor(address tropCardboardCoinAddress) ERC721("SodaPhones", "SDP") {
         TROPICAL_CARDBOARD_COIN_ADDRESS = tropCardboardCoinAddress;
@@ -60,7 +60,7 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
         // Must be an owner of TropicalCarboardCoin
         require(tropCardboardBalance >= 1, "Must own a TropicalCardboardCoin!");
         // Supply must not be exceeded
-        require(existingURIs[metadataURI] <= 10, "Max supply reached!");
+        require(existingURIs[metadataURI] <= 11, "Max supply reached!");
 
         // Burn one Tropical Cardboard Coin
         tcc.burn(recipient, 0, 1);
@@ -75,4 +75,11 @@ contract SodaPhones is ERC721, ERC721URIStorage, Ownable {
         return newItemId;
     }
 
+    function setTropicalCardboardAddress(address tccAddress) public onlyOwner {
+        TROPICAL_CARDBOARD_COIN_ADDRESS = tccAddress;
+    }
+
+    function withdrawAll() external onlyOwner {
+        require(payable(msg.sender).send(address(this).balance));
+    }
 }
