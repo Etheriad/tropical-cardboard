@@ -2,8 +2,7 @@ import { Button } from '@mantine/core';
 // eslint-disable-next-line node/no-unpublished-import
 import { ethers } from 'ethers';
 import { FC } from 'react';
-import TropicalCardboardCoin from '../../artifacts/contracts/TropicalCardboardCoin.sol/TropicalCardboardCoin.json';
-import { TROPICAL_CARDBOARD_COIN } from '../../constants/contracts';
+import { useContracts } from '../../hooks/useContracts';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -13,25 +12,12 @@ declare global {
 }
 
 const TropicalCardboardMint: FC = () => {
+  const { tropicalCardboard, signer } = useContracts();
   const mintToken = async () => {
-    // TropicalCardboardCoin
-    const contractAddress = TROPICAL_CARDBOARD_COIN.address;
-
-    const provider = new ethers.providers.Web3Provider(window.ethereum!);
-
-    // get the end user
-    const signer = provider.getSigner();
-
-    // get the smart contract
-    const tropicalContract = new ethers.Contract(
-      contractAddress,
-      TropicalCardboardCoin.abi,
-      signer
-    );
-
+    if (!tropicalCardboard || !signer) return;
     const addr = await signer.getAddress();
 
-    const result = await tropicalContract.payToMint(addr, 0, 1, '0x', {
+    const result = await tropicalCardboard.payToMint(addr, 0, 1, '0x', {
       value: ethers.utils.parseEther('0.0025')
     });
 
