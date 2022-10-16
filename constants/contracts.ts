@@ -1,9 +1,0 @@
-const TROPICAL_CARDBOARD_COIN = {
-  address: '0x26b3Abe3E98b1A9E41e53560Ef0Ce2F415B6871E'
-};
-
-const SODA_PHONES = {
-  address: ''
-};
-
-export { TROPICAL_CARDBOARD_COIN, SODA_PHONES };

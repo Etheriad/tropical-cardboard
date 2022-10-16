@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -31,8 +32,9 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         }}
       >
-        {/* <Navigation links={NAV_LINKS} /> */}
-        <Component {...pageProps} />
+        <NotificationsProvider>
+          <Component {...pageProps} />
+        </NotificationsProvider>
       </MantineProvider>
     </>
   );

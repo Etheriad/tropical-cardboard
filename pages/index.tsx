@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'react';
 import { CoinExchange } from '../components/TropicalCardboard';
 import { SodaMachine } from '../components/SodaPhones';
 import { ParallaxCardGenerator } from '../common/Cards';
+import SodaPhonesStock from '../components/SodaPhones/SodaPhonesStock';
 
 const COIN_EXCHANGE_HASH = '#coin-exchange';
 const SODA_MACHINE_HASH = '#soda-machine';
@@ -221,7 +222,10 @@ const Home: NextPage = () => {
               your wallet. This is usually referred to as minting when you are
               buying something new like this."
             />
-            <SodaMachine />
+            <div className="flex justify-center w-screen">
+              <SodaMachine />
+              <SodaPhonesStock />
+            </div>
           </Container>
         </ParallaxLayer>
         <ParallaxLayer
