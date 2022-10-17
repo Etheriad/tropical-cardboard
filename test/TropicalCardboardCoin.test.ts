@@ -24,7 +24,7 @@ describe('TropicalCardboardCoin', () => {
     expect(supply).to.equal(0);
 
     await tropicalCardboardCoin.payToMint(recipient1, 0, 2, '0x', {
-      value: ethers.utils.parseEther('0.0025')
+      value: ethers.utils.parseEther('0.0050')
     });
 
     const newBalance = await tropicalCardboardCoin.balanceOf(recipient1, 0);
@@ -54,7 +54,7 @@ describe('TropicalCardboardCoin', () => {
     expect(balance).to.equal(0);
 
     await tropicalCardboardCoin.payToMint(recipient2, 0, 1442, '0x', {
-      value: ethers.utils.parseEther('0.0025')
+      value: ethers.utils.parseEther('3.605')
     });
 
     const newBalance = await tropicalCardboardCoin.balanceOf(recipient2, 0);

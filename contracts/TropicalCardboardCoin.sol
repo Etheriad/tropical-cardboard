@@ -46,7 +46,7 @@ contract TropicalCardboardCoin is ERC1155, Ownable, ERC1155Burnable {
         bytes memory data
     ) public payable {
         require(inCirculation + amount <= MAX_SUPPLY, "Max supply reached");
-        require (msg.value >= 0.0025 ether, "Need to pay up!");
+        require (msg.value >= amount * (0.0025 ether), "Need to pay up!");
         
         _mint(account, id, amount, data);
         inCirculation += amount;

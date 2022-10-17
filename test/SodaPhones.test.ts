@@ -74,7 +74,7 @@ describe('SodaPhones', () => {
 
   it('should deny mint after 12 minted', async () => {
     await tropicalCardboardCoin.payToMint(recipient1, 0, 12, '0x', {
-      value: ethers.utils.parseEther('0.0025')
+      value: ethers.utils.parseEther('0.03')
     });
     const promises = [...Array(12)].map(async () => {
       return await sodaPhones.payToMint(recipient1, '2.json');
