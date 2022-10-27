@@ -4,8 +4,15 @@ import { useContracts } from '../../hooks/useContracts';
 import { coordinatesToFileName } from './coordinatesUtil';
 import {
   alertError,
+  alertLoadIntoSuccess,
   alertTransactionSuccess
 } from '../../common/Alerts/alertUtil';
+
+interface ProviderRpcError extends Error {
+  message: string;
+  code: number;
+  data?: unknown;
+}
 
 const SodaPhonesMint: FC = () => {
   const { signer, sodaPhones, tropicalCardboard } = useContracts();
@@ -63,12 +70,15 @@ const SodaPhonesMint: FC = () => {
     try {
       const addr = await signer!.getAddress();
       const result = await sodaPhones!.payToMint(addr, coordinatesToMint);
-      await result.wait();
 
-      alertTransactionSuccess(result.hash);
+      alertLoadIntoSuccess(result);
     } catch (error) {
-      console.error(error);
-      alertError();
+      if (error?.error) {
+        const typedError = error.error as ProviderRpcError;
+        alertError(typedError.message);
+      } else {
+        alertError(error.message);
+      }
     }
   };
 
