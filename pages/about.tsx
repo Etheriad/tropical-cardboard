@@ -24,9 +24,9 @@ const About: NextPage = () => {
               can be a lot of fear, uncertainty, and doubt. My aim with this
               project is to cut down some of those barriers to entry and give
               you a starting place to begin learning about these complex topics
-              in a safe and simple way. I picked an activity I think most people are
-              familiar with, buying a soda out of a soda machine, but doing it
-              all with cyrptocurrencies and digital assets of the MetaVerse,
+              in a safe and simple way. I picked an activity I think most people
+              are familiar with, buying a soda out of a soda machine, but doing
+              it all with cyrptocurrencies and digital assets of the MetaVerse,
               NFTs.
             </Text>
           </Card>
