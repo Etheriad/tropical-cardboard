@@ -129,7 +129,7 @@ const Home: NextPage = () => {
             Typically that's called cryptocurrency. There are alot of
             different types of cryptocurriences. Bitcoin was the first one. Our
             money exchanger uses the Ethereum Cryptocurrency called Ether or Eth
-            for short. But in order to hold cryptocurrencies, your going to need
+            for short. But in order to hold cryptocurrencies, you're going to need
             a special wallet for the Metaverse."
             />
           </Container>

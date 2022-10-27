@@ -6,8 +6,10 @@ const References: NextPage = () => {
   return (
     <>
       <Navigation selected="References" />
-      <Center>
-        <Text>I will fill out this page with some of my favorite projects personally as well as links to helpful educational content.
+      <Center className="mt-5">
+        <Text>
+          I will fill out this page with some of my favorite projects personally
+          as well as links to helpful educational content.
         </Text>
       </Center>
     </>
