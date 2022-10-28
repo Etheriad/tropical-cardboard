@@ -167,7 +167,7 @@ const Home: NextPage = () => {
             <ParallaxCardGenerator
               text="Now that we have our new wallet for the MetaVerse, let's buy
               some cryptocurrency. You can buy directly in your Metamask wallet. I
-              recommend starting with a small amount like 0.001 Eth to Start. You
+              recommend starting with a small amount like 0.01 Eth to Start. You
               can buy fractions of an Eth, which is good because as Eth has gained
               popularity, it's become more expensive to buy."
             />
