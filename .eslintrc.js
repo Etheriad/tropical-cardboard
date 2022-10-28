@@ -10,7 +10,6 @@ module.exports = {
     'standard',
     'plugin:prettier/recommended',
     'plugin:node/recommended',
-    'plugin:@next/next/recommended',
     'next/core-web-vitals',
     'plugin:import/recommended'
   ],
