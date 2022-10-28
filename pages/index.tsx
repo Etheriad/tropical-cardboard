@@ -129,7 +129,7 @@ const Home: NextPage = () => {
             Typically that's called cryptocurrency. There are alot of
             different types of cryptocurriences. Bitcoin was the first one. Our
             money exchanger uses the Ethereum Cryptocurrency called Ether or Eth
-            for short. But in order to hold cryptocurrencies, your going to need
+            for short. But in order to hold cryptocurrencies, you're going to need
             a special wallet for the Metaverse."
             />
           </Container>
@@ -167,7 +167,7 @@ const Home: NextPage = () => {
             <ParallaxCardGenerator
               text="Now that we have our new wallet for the MetaVerse, let's buy
               some cryptocurrency. You can buy directly in your Metamask wallet. I
-              recommend starting with a small amount like 0.001 Eth to Start. You
+              recommend starting with a small amount like 0.01 Eth to Start. You
               can buy fractions of an Eth, which is good because as Eth has gained
               popularity, it's become more expensive to buy."
             />
