@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -34,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
       >
         <NotificationsProvider>
           <Component {...pageProps} />
+          <Analytics />
         </NotificationsProvider>
       </MantineProvider>
     </>
