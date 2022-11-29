@@ -12,7 +12,7 @@ import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import ConnectWalletButton from './ConnectWalletButton';
-import { IconBrandTwitter, IconBrandDiscord } from '@tabler/icons';
+import { IconBrandTwitter } from '@tabler/icons';
 
 const HEADER_HEIGHT = 60;
 
