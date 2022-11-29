@@ -12,6 +12,7 @@ import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import ConnectWalletButton from './ConnectWalletButton';
+import { IconBrandTwitter, IconBrandDiscord } from '@tabler/icons';
 
 const HEADER_HEIGHT = 60;
 
@@ -197,6 +198,11 @@ const Navigation = ({ links = NAV_LINKS, selected }: HeaderResponsiveProps) => {
           {items}
           <ConnectWalletButton />
         </Group>
+        <Group className={classes.links}>
+          <a className={classes.link} href="https://twitter.com/tropicalcb">
+            <IconBrandTwitter />
+          </a>
+        </Group>
 
         <Burger
           opened={opened}
@@ -209,6 +215,9 @@ const Navigation = ({ links = NAV_LINKS, selected }: HeaderResponsiveProps) => {
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
               {items}
+              <a className={classes.link} href="https://twitter.com/tropicalcb">
+                Follow us on Twitter
+              </a>
             </Paper>
           )}
         </Transition>
