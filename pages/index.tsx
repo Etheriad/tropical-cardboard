@@ -149,10 +149,12 @@ const Home: NextPage = () => {
               you need help. Remember, Don't ever store your seed phrase on
               your computer or share it with anyone. Write your seed phrase down
               and keep it safe."
-              button={{
-                href: 'https://metamask.io/download.html',
-                text: 'Download the MetaMask wallet here'
-              }}
+              buttons={[
+                {
+                  href: 'https://metamask.io/download.html',
+                  text: 'Download the MetaMask wallet here'
+                }
+              ]}
             />
           </Container>
         </ParallaxLayer>
@@ -188,6 +190,12 @@ const Home: NextPage = () => {
             takes. Somebody took the time to make these tokens look cool and
             spin around. If you want, you can keep them as a souvineer in your
             wallet (like an arcade token)."
+              buttons={[
+                {
+                  text: 'Tropical Cardboard Coins on OpenSea',
+                  href: 'https://opensea.io/collection/tropical-cardboard-tokens'
+                }
+              ]}
             />
             <CoinExchange />
           </Container>
@@ -221,6 +229,12 @@ const Home: NextPage = () => {
               text="Choose which sodaphones you want, and confirm the transaction in
               your wallet. This is usually referred to as minting when you are
               buying something new like this."
+              buttons={[
+                {
+                  text: 'Soda Phones on OpenSea',
+                  href: 'https://opensea.io/collection/sodaphones'
+                }
+              ]}
             />
             <div className="flex justify-center w-screen">
               <SodaMachine />
@@ -242,10 +256,20 @@ const Home: NextPage = () => {
               different platforms like Opensea and LooksRare. These are
               marketplaces where items are sold and traded. This is your soda. You
               can choose to sell it or give it away if you would like."
-              button={{
-                text: 'Go to OpenSea to see your soda!',
-                href: 'https://opensea.io/account?tab=collected'
-              }}
+              buttons={[
+                {
+                  text: 'Go to OpenSea to see your collection!',
+                  href: 'https://opensea.io/account?tab=collected'
+                },
+                {
+                  text: 'Tropical Cardboard Coin',
+                  href: 'https://opensea.io/collection/tropical-cardboard-tokens'
+                },
+                {
+                  text: 'Soda Phones',
+                  href: 'https://opensea.io/collection/sodaphones'
+                }
+              ]}
             />
           </Container>
         </ParallaxLayer>
