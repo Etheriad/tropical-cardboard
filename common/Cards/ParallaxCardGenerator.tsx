@@ -9,13 +9,13 @@ interface ButtonProps {
 interface ParallaxCardProps {
   title?: string;
   text: string;
-  button?: ButtonProps;
+  buttons?: ButtonProps[];
 }
 
 const ParallaxCardGenerator: FC<ParallaxCardProps> = ({
   title,
   text,
-  button
+  buttons
 }) => {
   return (
     <Card shadow="sm" p="lg" radius="md" withBorder>
@@ -27,20 +27,22 @@ const ParallaxCardGenerator: FC<ParallaxCardProps> = ({
       <Text align="center" size="sm" color="dimmed">
         {text}
       </Text>
-      {button ? (
-        <Center>
-          <Button
-            mt="md"
-            radius="md"
-            color="orange"
-            component="a"
-            target="_blank"
-            href={button.href}
-          >
-            {button.text}
-          </Button>
-        </Center>
-      ) : null}
+      {buttons
+        ? buttons.map((button) => (
+            <Center key={button.text}>
+              <Button
+                mt="md"
+                radius="md"
+                color="orange"
+                component="a"
+                target="_blank"
+                href={button.href}
+              >
+                {button.text}
+              </Button>
+            </Center>
+          ))
+        : null}
     </Card>
   );
 };
