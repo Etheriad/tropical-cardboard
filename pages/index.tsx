@@ -243,7 +243,7 @@ const Home: NextPage = () => {
                 }
               ]}
             />
-            <div className="flex justify-center w-screen">
+            <div className="flex justify-center">
               <SodaMachine />
               <SodaPhonesStock />
             </div>

@@ -13,8 +13,6 @@ const useSodaPhoneSupply = () => {
     if (!sodaPhones) return;
     const values = Array.from(coordinatesToPathMap.values());
 
-    console.log(sodaPhones.address);
-
     const promises = values.map(async (path) => {
       try {
         const supply = await sodaPhones!.getContentSupply(path);

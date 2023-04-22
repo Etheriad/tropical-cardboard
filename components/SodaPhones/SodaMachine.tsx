@@ -19,7 +19,7 @@ const SodaMachine: FC = () => {
   };
 
   return (
-    <Container className="mt-5 mb-10 sm:w-1/4 sm:h-1/4">
+    <Container className="mt-5 mb-10 sm:w-2/5 sm:h-2/5">
       <SodaPhonesMintModal
         opened={isMintModalOpened}
         setOpened={setIsMintModalOpened}
