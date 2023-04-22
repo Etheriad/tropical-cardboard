@@ -73,6 +73,10 @@ const Home: NextPage = () => {
     {
       label: 'References',
       link: '/references'
+    },
+    {
+      label: 'Docs',
+      link: 'http://www.docs.tropicalcardboard.com/'
     }
   ];
 
@@ -83,10 +87,13 @@ const Home: NextPage = () => {
         <ParallaxLayer
           style={{
             backgroundSize: 'cover',
-            backgroundImage: 'url(/backgrounds/0.svg)'
+            backgroundImage: 'url(/backgrounds/0.svg)',
+            // Transform to flip the background
+            transform: 'scale(-1, -1)'
           }}
         >
-          <Container className={classes.container.col}>
+          {/* Add rotate to flip over text */}
+          <Container className={classes.container.col + ' rotate-180'}>
             <Title order={1} align="center" color="violet">
               Welcome to the
             </Title>

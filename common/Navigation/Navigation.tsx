@@ -120,6 +120,10 @@ const NAV_LINKS = [
   {
     label: 'References',
     link: '/references'
+  },
+  {
+    label: 'Docs',
+    link: 'http://www.docs.tropicalcardboard.com/'
   }
 ];
 

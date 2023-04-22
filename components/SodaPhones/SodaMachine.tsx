@@ -19,7 +19,7 @@ const SodaMachine: FC = () => {
   };
 
   return (
-    <Container className="relative h-full w-1/2 mt-7 pr-0 ml-0 mr-0">
+    <Container className="mt-5 mb-10 sm:w-1/4 sm:h-1/4">
       <SodaPhonesMintModal
         opened={isMintModalOpened}
         setOpened={setIsMintModalOpened}
@@ -34,8 +34,6 @@ const SodaMachine: FC = () => {
         className="cursor-pointer"
         alt="Soda Machine"
         src={sodaMachine}
-        layout="fill"
-        objectFit="contain"
       />
     </Container>
   );
