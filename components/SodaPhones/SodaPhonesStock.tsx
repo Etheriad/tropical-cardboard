@@ -1,11 +1,13 @@
 import { Card, Table } from '@mantine/core';
 import { ReactElement, FC, useEffect, useState } from 'react';
 import { useSodaPhoneSupply } from '../../hooks/useSodaPhoneSupply';
+import { useDetectProvider } from '../../hooks/useDetectProvider';
 
 type Rows = ReactElement[] | null;
 
 const SodaPhonesStock: FC = () => {
   const { sodaPhonesSupply } = useSodaPhoneSupply();
+  const { provider } = useDetectProvider();
   const [rows, setRows] = useState<Rows>(null);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const SodaPhonesStock: FC = () => {
     setRows(populatedRows);
   }, [sodaPhonesSupply]);
 
-  if (!rows?.length) {
+  if (!rows?.length || !provider) {
     return null;
   }
 

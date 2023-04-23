@@ -1,16 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
 import { coordinatesToPathMap } from '../components/SodaPhones/coordinatesUtil';
 import { useContracts } from './useContracts';
+import { useWalletConnection } from './useWalletConnection';
 
 type SodaPhonesSupply = any;
 
 const useSodaPhoneSupply = () => {
+  const { isWalletConnected } = useWalletConnection();
   const { sodaPhones } = useContracts();
   const [sodaPhonesSupply, setSodaPhonesSupply] =
     useState<SodaPhonesSupply | null>(null);
 
   const getSupply = useCallback(async () => {
-    if (!sodaPhones) return;
+    if (!sodaPhones || !isWalletConnected) return;
     const values = Array.from(coordinatesToPathMap.values());
 
     const promises = values.map(async (path) => {
@@ -39,7 +41,7 @@ const useSodaPhoneSupply = () => {
       ['C4', stock[11]]
     ]);
     setSodaPhonesSupply(supply);
-  }, [sodaPhones]);
+  }, [sodaPhones, isWalletConnected]);
 
   useEffect(() => {
     getSupply();

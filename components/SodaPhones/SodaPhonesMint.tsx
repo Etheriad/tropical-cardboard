@@ -6,6 +6,7 @@ import {
   alertError,
   alertTransactionSuccess
 } from '../../common/Alerts/alertUtil';
+import { connectWallet } from '../../common/util/connectWallet';
 
 const SodaPhonesMint: FC = () => {
   const { signer, sodaPhones, tropicalCardboard } = useContracts();
@@ -53,6 +54,13 @@ const SodaPhonesMint: FC = () => {
   };
 
   const mintSodaPhone = async () => {
+    try {
+      await connectWallet();
+    } catch (e) {
+      console.error(e);
+      return;
+    }
+
     if (!coordinatesToFileName(coordinates)) {
       console.error('Invalid Input');
       return;
