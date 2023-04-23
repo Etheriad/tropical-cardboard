@@ -27,8 +27,12 @@ const SodaPhonesStock: FC = () => {
     setRows(populatedRows);
   }, [sodaPhonesSupply]);
 
+  if (!rows?.length) {
+    return null;
+  }
+
   return (
-    <Card className="mt-5 ml-2">
+    <Card className="mt-5 ml-2 hidden sm:block">
       <Table>
         <thead>
           <tr>
