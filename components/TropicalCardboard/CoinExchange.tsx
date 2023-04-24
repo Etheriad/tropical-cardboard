@@ -14,12 +14,8 @@ const CoinExchange: FC = () => {
   const { provider } = useDetectProvider();
 
   const handleClick = () => {
-    if (!provider) {
-      if (isMobile) {
-        window.location.replace(process.env.NEXT_PUBLIC_DEEP_LINK!);
-      } else {
-        setIsMetaMaskModalOpened(true);
-      }
+    if (!provider && !isMobile) {
+      setIsMetaMaskModalOpened(true);
     } else {
       setIsMintModalOpened(true);
     }
