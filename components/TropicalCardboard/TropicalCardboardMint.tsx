@@ -6,6 +6,7 @@ import { useContracts } from '../../hooks/useContracts';
 import { connectWallet } from '../../common/util/connectWallet';
 import { isMobile } from 'react-device-detect';
 import { useDetectProvider } from '../../hooks/useDetectProvider';
+import { metaMaskDeepLinkPrefix } from '../../common/constants';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -22,9 +23,7 @@ const TropicalCardboardMint: FC = () => {
     if (isMobile && !provider) {
       const mintLocation = window.location.host + '/mint-tcc';
 
-      window.location.replace(
-        process.env.NEXT_PUBLIC_DEEP_LINK_PREFIX! + mintLocation
-      );
+      window.location.replace(metaMaskDeepLinkPrefix! + mintLocation);
 
       return;
     }
