@@ -5,6 +5,7 @@ import { Container } from '@mantine/core';
 import { MetaMaskModal } from '../../common/Modals';
 import coinExchange from '../../public/images/coin-exchange.png';
 import { useDetectProvider } from '../../hooks/useDetectProvider';
+import { isMobile } from 'react-device-detect';
 
 const CoinExchange: FC = () => {
   const [isMetaMaskModalOpened, setIsMetaMaskModalOpened] =
@@ -14,7 +15,11 @@ const CoinExchange: FC = () => {
 
   const handleClick = () => {
     if (!provider) {
-      setIsMetaMaskModalOpened(true);
+      if (isMobile) {
+        window.location.replace(process.env.NEXT_PUBLIC_DEEP_LINK!);
+      } else {
+        setIsMetaMaskModalOpened(true);
+      }
     } else {
       setIsMintModalOpened(true);
     }
