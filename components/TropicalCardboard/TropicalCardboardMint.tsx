@@ -20,9 +20,13 @@ const TropicalCardboardMint: FC = () => {
 
   const mintToken = async () => {
     if (isMobile && !provider) {
+      const mintLocation = window.location.host + '/mint-tcc';
+
       window.location.replace(
-        process.env.NEXT_PUBLIC_DEEP_LINK! + '#coin-exchange'
+        process.env.NEXT_PUBLIC_DEEP_LINK_PREFIX! + mintLocation
       );
+
+      return;
     }
 
     try {
