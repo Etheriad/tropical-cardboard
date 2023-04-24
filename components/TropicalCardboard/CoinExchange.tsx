@@ -21,7 +21,7 @@ const CoinExchange: FC = () => {
   };
 
   return (
-    <Container className="relative h-full w-full">
+    <Container className="relative sm:mt-5 h-3/4 w-3/4">
       <MintModal opened={isMintModalOpened} setOpened={setIsMintModalOpened} />
       <MetaMaskModal
         opened={isMetaMaskModalOpened}
