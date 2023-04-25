@@ -6,9 +6,14 @@ import {
   alertError,
   alertTransactionSuccess
 } from '../../common/Alerts/alertUtil';
+import { connectWallet } from '../../common/util/connectWallet';
+import { metaMaskDeepLinkPrefix } from '../../common/constants';
+import { useDetectProvider } from '../../hooks/useDetectProvider';
+import { isMobile } from 'react-device-detect';
 
 const SodaPhonesMint: FC = () => {
   const { signer, sodaPhones, tropicalCardboard } = useContracts();
+  const { provider } = useDetectProvider();
   const [coordinates, setCoordinates] = useState('');
   const [isMintDisabled, setIsMintDisabled] = useState(false);
   const [isApproved, setIsApproved] = useState(false);
@@ -36,6 +41,14 @@ const SodaPhonesMint: FC = () => {
   }, [checkApproval]);
 
   const approve = async () => {
+    if (isMobile && !provider) {
+      const mintLocation = window.location.host + '/approve';
+
+      window.location.replace(metaMaskDeepLinkPrefix! + mintLocation);
+
+      return;
+    }
+
     if (!tropicalCardboard) return;
 
     try {
@@ -53,6 +66,23 @@ const SodaPhonesMint: FC = () => {
   };
 
   const mintSodaPhone = async () => {
+    if (isMobile && !provider) {
+      const mintLocation = window.location.host + '/mint-sp';
+
+      window.location.replace(
+        metaMaskDeepLinkPrefix! + mintLocation + `?coordinates=${coordinates}`
+      );
+
+      return;
+    }
+
+    try {
+      await connectWallet();
+    } catch (e) {
+      console.error(e);
+      return;
+    }
+
     if (!coordinatesToFileName(coordinates)) {
       console.error('Invalid Input');
       return;
