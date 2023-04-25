@@ -25,9 +25,7 @@ const Approve: NextPage = () => {
         return;
       }
 
-      const coordinates = new URLSearchParams(window.location.search).get(
-        'coordinates'
-      );
+      const coordinates = window.location.search.split('?coordinates=').pop();
 
       if (!coordinates) {
         alertError('Invalid Input');
