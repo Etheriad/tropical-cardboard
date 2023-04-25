@@ -66,6 +66,16 @@ const SodaPhonesMint: FC = () => {
   };
 
   const mintSodaPhone = async () => {
+    if (isMobile && !provider) {
+      const mintLocation = window.location.host + '/mint-sp';
+
+      window.location.replace(
+        metaMaskDeepLinkPrefix! + mintLocation + `?coordinates=${coordinates}`
+      );
+
+      return;
+    }
+
     try {
       await connectWallet();
     } catch (e) {
